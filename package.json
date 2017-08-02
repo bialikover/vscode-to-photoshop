@@ -4,6 +4,7 @@
   "description": "send extend script from visual studio code to photoshop",
   "version": "0.0.1",
   "publisher": "bialikover",
+  "repository": "https://github.com/bialikover/vscode-to-photoshop",
   "engines": {
     "vscode": "^1.14.0"
   },
