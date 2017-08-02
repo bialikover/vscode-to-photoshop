@@ -1,4 +1,4 @@
-# vsc-ps
+# vscode-to-photoshop
 
 vscode to photoshop is an extension for Visual Studio Code to execute a JSX file in Photoshop.
 

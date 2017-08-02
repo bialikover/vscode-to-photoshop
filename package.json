@@ -1,6 +1,6 @@
 {
-  "name": "vsc-ps",
-  "displayName": "vsc-Ps",
+  "name": "vscode-to-photoshop",
+  "displayName": "vscode-to-Photoshop",
   "description": "send extend script from visual studio code to photoshop",
   "version": "0.0.1",
   "publisher": "bialikover",
