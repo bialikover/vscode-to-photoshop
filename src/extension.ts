@@ -8,7 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
 
     console.log('vscode-to-photoshop is now active');
     let outputChannel = vscode.window.createOutputChannel('Extend Script');
-    outputChannel.show();
     let disposable = vscode.commands.registerCommand('extension.evaluateScript', () => {
         vscode.window.showInformationMessage('Evaluating Extend Script');
 
@@ -24,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
             if(err){showOutput(`error: ${err.message} \n stack: ${err.stack}`)}
             let script = `tell application id "com.adobe.Photoshop" to do javascript ("#include ${pathTojsx}")`;
             //show the output.
-            
+            outputChannel.show();
             osascript.execute(script, (err, res, raw)=>{
                 if(err){
                     showOutput(err);
