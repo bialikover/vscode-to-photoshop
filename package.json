@@ -18,7 +18,7 @@
     "commands": [
       {
         "command": "extension.evaluateScript",
-        "title": "Evaluate extend script"
+        "title": "Extend Script: Evaluate"
       }
     ]
   },
