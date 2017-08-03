@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "publisher": "bialikover",
   "repository": "https://github.com/bialikover/vscode-to-photoshop",
+  "icon": "src/images/vsps.png",
   "engines": {
     "vscode": "^1.14.0"
   },
