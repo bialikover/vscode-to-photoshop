@@ -4,7 +4,8 @@ vscode to photoshop is an extension for Visual Studio Code to execute a JSX file
 
 ## Features
 This extension allows you to write Extend Script and evaluate in photoshop directly from visual studio code.
-![vscode-to-photoshop](src/images/vscode-to-photoshop.gif)
+
+![vscode-to-photoshop](images/vscode-to-photoshop.gif)
 ## Usage
 - Install the extension from the market place.
 - Press cmd + shift + p to open the command palete
@@ -33,6 +34,10 @@ The support for this plugin is only for OSX at the moment.
 
 ## Version history
 
+### 0.0.2
+
+- Updated image folder 
+- Updated package.json with repository and icons
 ### 0.0.1
 
 Initial release of vscode to photoshop
