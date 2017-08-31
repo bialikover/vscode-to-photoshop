@@ -17,26 +17,23 @@ export function activate(context: vscode.ExtensionContext) {
         }
         let selection = editor.selection;
         let text = selection.isEmpty ? editor.document.getText() : editor.document.getText(selection);
-        
-        let pathTojsx = './tmp/file.jsx';
-        fs.writeFile(pathTojsx, text, function(err){
-            if(err){showOutput(`error: ${err.message} \n stack: ${err.stack}`)}
+
+        let pathTojsx = __dirname + '/tmp_file.jsx';
+        fs.writeFile(pathTojsx, text, function (err) {
+            if (err) { return showOutput(`error: ${err.message} \n stack: ${err.stack}`) }
             let script = `tell application id "com.adobe.Photoshop" to do javascript ("#include ${pathTojsx}")`;
             //show the output.
             outputChannel.show();
-            osascript.execute(script, (err, res, raw)=>{
-                if(err){
-                    showOutput(err);
-                    return;
-                }
+            osascript.execute(script, (err, res, raw) => {
+                if (err) { return showOutput(`error: ${err.message} \n stack: ${err.stack}`) };
                 showOutput(res);
             })
         })
 
-        function showOutput(message:string){
+        function showOutput(message: string) {
             outputChannel.append(`${new Date().toISOString()} ${message}`);
 
-          }
+        }
     });
 
     context.subscriptions.push(disposable);
