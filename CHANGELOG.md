@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+## [0.0.3] - 2017-08-14
+### Bug fixes:
+- fixed error with jsx temp file that was not being created.
 ## [0.0.2] - 2017-08-03
 ### Updated
 - Updated image folder 

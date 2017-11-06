@@ -18,11 +18,12 @@ You will need Phostoshop CC 2015 or greater installed
 
 ## Known Issues
 
-The support for this plugin is only for OSX at the moment.
+On windows: `wscript` is not returning any result to Extend Script log.
 
 ## Release Notes
 
 1. Functionality to evaluate scripts without saving, 
+1. Functionality to evaluate text selected
 1. Functionality to evaluate text selected
 
 ## Development
@@ -30,10 +31,13 @@ The support for this plugin is only for OSX at the moment.
 1. clone the repo
 2. `npm install`
 3. open with **vscode**
-4. press `f5` to start debug in vscode
+4. press `f5` to start debuging the extension in vscode
 
 ## Version history
 
+### 0.0.3
+
+- Added initial support for windows.
 ### 0.0.2
 
 - Updated image folder 

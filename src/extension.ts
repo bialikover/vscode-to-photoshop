@@ -2,7 +2,12 @@
 
 import * as vscode from 'vscode';
 import * as osascript from 'node-osascript';
-import * as fs from 'fs'
+import * as fs from 'fs';
+import * as cs from 'child_process';
+import * as path from 'path';
+
+const WINDOWS = 'win32';
+const OSX = 'darwin';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -17,26 +22,34 @@ export function activate(context: vscode.ExtensionContext) {
         }
         let selection = editor.selection;
         let text = selection.isEmpty ? editor.document.getText() : editor.document.getText(selection);
+
+        let pathTojsx = path.resolve(__dirname, 'tmp_file.jsx');
         
-        let pathTojsx = './tmp/file.jsx';
-        fs.writeFile(pathTojsx, text, function(err){
-            if(err){showOutput(`error: ${err.message} \n stack: ${err.stack}`)}
-            let script = `tell application id "com.adobe.Photoshop" to do javascript ("#include ${pathTojsx}")`;
+        fs.writeFile(pathTojsx, text, (err) => {
+            if (err) { return showOutput(`error: ${err.message} \n stack: ${err.stack}`) }
             //show the output.
             outputChannel.show();
-            osascript.execute(script, (err, res, raw)=>{
-                if(err){
-                    showOutput(err);
-                    return;
-                }
-                showOutput(res);
-            })
-        })
 
-        function showOutput(message:string){
+            if (process.platform === WINDOWS) {
+                let script = `wscript ${path.resolve(__dirname, '../../photoshop.vbs')} ${pathTojsx} ""`;
+                cs.exec(script, cb);
+            }
+
+            if (process.platform === OSX) {
+                let script = `tell application id "com.adobe.Photoshop" to do javascript ("#include ${pathTojsx}")`;
+                osascript.execute(script, cb);
+            }
+
+        });
+
+        function cb(err, res, raw) {
+            if (err) { return showOutput(`error: ${err.message} \n stack: ${err.stack}`) };
+            showOutput(res);
+        }
+
+        function showOutput(message: string) {
             outputChannel.append(`${new Date().toISOString()} ${message}`);
-
-          }
+        }
     });
 
     context.subscriptions.push(disposable);

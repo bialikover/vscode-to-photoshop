@@ -2,7 +2,7 @@
   "name": "vscode-to-photoshop",
   "displayName": "vscode-to-Photoshop",
   "description": "send extend script from visual studio code to photoshop",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "bialikover",
   "bugs": {
       "url": "https://github.com/bialikover/vscode-to-photoshop/issues",
